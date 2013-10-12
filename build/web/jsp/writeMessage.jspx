@@ -1,0 +1,26 @@
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" 
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          version="2.0">
+
+    <jsp:directive.page contentType="text/html" pageEncoding="UTF-8"/>
+    <jsp:body>
+    <html>
+        <head>
+            <title>
+                sending message
+            </title>
+        </head>
+        <body>
+            <h3>Send message to ${user.name} ${user.surname}</h3>
+            <hr/>
+            <form method="post">
+                <input type="text" name="textMessage"/>
+                <input type="hidden" name="command" value="sendMessages"/>
+                <input name="reciever" value="${reciever}"/>
+                
+                <input type="submit" value="send"/>
+            </form>
+        </body>
+    </html>
+    </jsp:body>
+</jsp:root>

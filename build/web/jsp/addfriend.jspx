@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" 
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          version="2.0">
+
+    <jsp:directive.page contentType="text/html" pageEncoding="UTF-8"/>
+
+    <html>
+        <head>
+            <title>
+                Friends 
+            </title>
+        </head>
+        <body>
+            <h3>Request sent to user</h3>
+            <hr/>
+            <c:out value="session - ${pageContext.session.id}  "/>
+            <hr/>
+                <c:out value="Name: ${user.name}  "/>
+                <c:out value="Surname: ${user.surname}  "/>
+                <c:out value="City: ${user.city}  "/>
+                <br/>
+            <hr/>
+            <form method="post" >
+                <input type="submit" name="command" value="profile" />
+                <input type="submit" name="command" value="logout" />
+            </form>  
+        </body>
+    </html>
+
+</jsp:root>
+ 

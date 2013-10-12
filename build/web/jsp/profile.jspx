@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" 
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
+          xmlns:mytag="/WEB-INF/tlds/ListTag" 
+
+          version="2.0">
+
+    <jsp:directive.page contentType="text/html" pageEncoding="UTF-8"/>
+    <jsp:body>
+        <html>
+            <head>
+                <title>
+                   Welcome, <c:out value= "${user.name}"/>!
+                </title>
+            </head>
+
+            <body>
+
+                <fmt:setLocale value="${loc}" />
+                <fmt:setBundle basename="com.bionic.socialnetwork.locale.localisation"/>
+                <fmt:requestEncoding value="UTF-8"/>
+
+                <h3><fmt:message key="welcome"/></h3>
+                <form method="post">
+                    <input type="submit" name="command" value="RU" />
+                    <input type="submit" name="command" value="EN" />
+                </form>
+                <hr/>
+                <c:out value="${pageContext.session.id}  "/>
+                <c:out value="${login}"/>
+                
+                <hr/>
+                Photo<br/>
+                <img src="MainServlet?command=img" width="100px" height="100px" />
+                
+                <br/>
+                <fmt:message key="name"/>:<c:out value="${user.name}"/>
+                <br/>
+                <fmt:message key="surname"/>:<c:out value="${user.surname}"/>
+                <br/>
+                <fmt:message key="city"/>:<c:out value="${user.city}"/>
+                <br/>
+                <fmt:message key="role"/>:<c:out value='${role}'/>
+
+                <fmt:message key="friends" var="friends"/>
+                <fmt:message key="logout" var="logout"/>
+                <fmt:message key="search" var="search"/>
+                <fmt:message key="friend_requests" var="request"/>
+                <fmt:message key="change_profile" var="change_profile"/>
+                <fmt:message key="view_messages" var="view_messages"/>
+                
+                <hr/>
+                <form method="post">
+                    <input type="hidden" name="command" value="friends" />
+                    <input type="submit" value="${friends}" />
+                </form>
+                <form method="post">
+                    <input type="hidden" name="command" value="logout" />
+                    <input type="submit" value="${logout}" />
+                </form>
+                <form method="post">
+                    <input type="hidden" name="command" value="search" />
+                    <input type="submit" value="${search}" />
+                </form>
+                <form method="post">
+                    <input type="hidden" name="command" value="requests" />
+                    <input type="submit" value="${request}" />
+                </form>
+                <form method="post">
+                    <input type="hidden" name="command" value="changeprofile" />
+                    <input type="submit" value="${change_profile}" />
+                </form>
+                <form method="post">
+                    <input type="hidden" name="command" value="viewMessages"/>
+                    <input type="submit" value="${view_messages}" />
+                </form>  
+                <mytag:block/>
+            </body>
+        </html>
+    </jsp:body>
+</jsp:root>
